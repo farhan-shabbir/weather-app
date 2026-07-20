@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Weather App</title>
+</head>
+<body class="bg-sky-300 overflow-x-hidden">
+  <nav class="flex items-center justify-between p-6  space-y-3 bg-white text-blue-500 shadow-gray-400 shadow-2xl rounded-full m-8 h-25" >
+    <!-- logo -->
+    <div class="text-3xl font-extrabold m-3 italic">SkyWeather</div>
+    
+     <!-- Middle Menu  -->
+    <ul class="flex space-x-8 text-2xl font-sans font-black">
+      <li>
+        <a href="#" class="hover:border-b-2 border-blue-400  pb-1">Home</a>
+      </li>
+      <li>
+        <a href="#" class="hover:border-b-2 hover:border-blue-400 pb-1">Forecast</a>
+      </li>
+      <li>
+        <a href="#" class="hover:border-b-2 hover:border-blue-400 pb-1">About</a>
+      </li>
+    </ul>
+    
+    <!-- Right: Search -->
+    <div class="flex items-center space-x-2 mr-5 mb-3">
+      <input id="city-input" class="px-3 py-2 rounded-full bg-gray-100 w-100 text-xl text-black  border-2 border-gray-200 focus:outline-none focus:rounded-full focus:ring-1 focus:ring-blue-300"  type="text" placeholder="Enter city name..." >
+      <button id="search_btn" class="bg-blue-800 hover:bg-blue-900 text-white px-6  py-3 rounded-full">
+        Search
+      </button>
+    </div>
+  </nav>
+
+   <main class=" flex items-center justify-center p-8 ">
+    <div class="bg-sky-100 shadow-2xl rounded-xl p-6 w-[1000px] h-[400px] text-center flex-col   ">
+      
+
+      <div class="flex items-center  mb-6 justify-around mt-12">
+        <div>
+        <h2 id="city" class=" text-4xl font-bold text-blue-500 mb-2"></h2>
+      <p class="text-gray-500 text-2xl mb-4">Sunny</p>
+      </div>
+      <div class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-blue-400 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414M18.364 18.364l-1.414-1.414M6.05 6.05L4.636 4.636M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+        </svg>
+        <p id="temp" class="text-5xl font-extrabold  text-blue-400"></p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4 text-gray-700 mt-20">
+        <!-- feels Like -->
+         <div class=" items-center space-x-3 bg-blue-50 rounded-lg p-3">
+          <i class="fa-solid fa-temperature-arrow-down text-blue-500"></i>
+          <div>
+        <p class="font-semibold text-gray-400  text-sm ">Feels Like: </p>
+        <P id="feels-like" class="text-gray-800 font-bold text-xl"></P>
+        </div>
+        </div>
+        
+        <div class="items-center space-x-3 bg-blue-50 rounded-lg p-3">
+            <i class="fa-solid fa-droplet text-blue-500"></i>
+            <div>
+        <p class="font-semibold  text-gray-400  text-sm">Humidity: </p>
+        <p  id="humidity" class="text-gray-800 font-bold text-xl"></p>
+           </div>
+        </div>
+
+        <div class="items-center space-x-3 bg-blue-50 rounded-lg p-3" >
+            <i class="fa-solid fa-wind text-blue-500"></i>
+            <div>
+            <p class="font-semibold  text-gray-400  text-sm">Wind:</p>
+            <p id="wind" class="text-gray-800 font-bold text-xl" ></p>
+            </div>
+        </div>
+        
+        <div class="items-center space-x-3 bg-blue-50 rounded-lg p-3">
+            <i class="fa-solid fa-gauge text-blue-500"></i>
+            <div>
+        <p class="font-semibold  text-gray-400  text-sm">Pressure:</p>
+         <p id="pressure" class="text-gray-800 font-bold text-xl" ></p>
+           </div>
+         </div>
+      </div>
+    </div>
+
+  </main>
+ 
+
+     <div class="bg-white shadow-xl rounded-2xl p-5 w-[1900px] m-3">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">7-Day Forecast</h2>
+
+    <div class="grid grid-cols-7 gap-6 text-center">
+      <!-- Monday -->
+      <div class="bg-blue-50 rounded-xl p-4 shadow-md hover:shadow-lg transition">
+        <p class="font-semibold text-gray-700">Mon</p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-400 mx-auto my-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414M18.364 18.364l-1.414-1.414M6.05 6.05L4.636 4.636M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+        </svg>
+        <p class="text-gray-800 font-bold">31° <span class="text-gray-500">22°</span></p>
+        <p class="text-gray-500 text-sm mt-1">💧 10%</p>
+      </div>
+
+      <!-- Tuesday -->
+      <div class="bg-blue-50 rounded-xl p-4 shadow-md hover:shadow-lg transition">
+        <p class="font-semibold text-gray-700">Tue</p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-400 mx-auto my-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 15a4 4 0 008 0m0 0a4 4 0 008 0m-8 0v4m0 0H5m8 0h6"/>
+        </svg>
+        <p class="text-gray-800 font-bold">28° <span class="text-gray-500">19°</span></p>
+        <p class="text-gray-500 text-sm mt-1">💧 30%</p>
+      </div>
+
+      <!-- Wednesday -->
+      <div class="bg-blue-50 rounded-xl p-4 shadow-md hover:shadow-lg transition">
+        <p class="font-semibold text-gray-700">Wed</p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500 mx-auto my-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 15a4 4 0 008 0m0 0a4 4 0 008 0m-8 0v4m0 0H5m8 0h6"/>
+        </svg>
+        <p class="text-gray-800 font-bold">24° <span class="text-gray-500">17°</span></p>
+        <p class="text-gray-500 text-sm mt-1">💧 85%</p>
+      </div>
+
+      <!-- Thursday -->
+      <div class="bg-blue-50 rounded-xl p-4 shadow-md hover:shadow-lg transition">
+        <p class="font-semibold text-gray-700">Thu</p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-300 mx-auto my-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 15a4 4 0 008 0m0 0a4 4 0 008 0m-8 0v4m0 0H5m8 0h6"/>
+        </svg>
+        <p class="text-gray-800 font-bold">27° <span class="text-gray-500">20°</span></p>
+        <p class="text-gray-500 text-sm mt-1">💧 20%</p>
+      </div>
+
+      <!-- Friday -->
+      <div class="bg-blue-50 rounded-xl p-4 shadow-md hover:shadow-lg transition">
+        <p class="font-semibold text-gray-700">Fri</p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-400 mx-auto my-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414M18.364 18.364l-1.414-1.414M6.05 6.05L4.636 4.636M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+        </svg>
+        <p class="text-gray-800 font-bold">30° <span class="text-gray-500">21°</span></p>
+        <p class="text-gray-500 text-sm mt-1">💧 5%</p>
+      </div>
+
+      <!-- saturday -->
+       <div class="bg-blue-50 rounded-xl p-4 shadow-md hover:shadow-lg transition">
+        <p class="font-semibold text-gray-700">Sat</p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-300 mx-auto my-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 15a4 4 0 008 0m0 0a4 4 0 008 0m-8 0v4m0 0H5m8 0h6"/>
+        </svg>
+        <p class="text-gray-800 font-bold">27° <span class="text-gray-500">20°</span></p>
+        <p class="text-gray-500 text-sm mt-1">💧 20%</p>
+      </div>   
+
+      <!-- Sunday -->
+        <div class="bg-blue-50 rounded-xl p-4 shadow-md hover:shadow-lg transition">
+        <p class="font-semibold text-gray-700">Sun</p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-300 mx-auto my-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 15a4 4 0 008 0m0 0a4 4 0 008 0m-8 0v4m0 0H5m8 0h6"/>
+        </svg>
+        <p class="text-gray-800 font-bold">27° <span class="text-gray-500">20°</span></p>
+        <p class="text-gray-500 text-sm mt-1">💧 20%</p>
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="loader" class="fixed inset-0 bg-white/80 flex items-center justify-center hidden z-50">
+  <div class="w-14 h-14 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+</div>
+</body>
+<script src="app.js"></script>
+</html>
+
